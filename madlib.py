@@ -1,8 +1,6 @@
-"""
-Mad Lib Generator 
-@Autors Trammel May, Gene Evans, Trent Duhart
-@Date April 10th, 2017
-"""
+#CST205-40
+#Trent Dehart, Trammel May, Gene Evans
+#Lab 13
 
 def readText(filePath):
   text = open(filePath, 'r').read()
@@ -13,10 +11,12 @@ def combine(text, matchers):
   list = re.findall(r"[\w\-?\w?]+|['s]+|[\(\)\".,!?;']", text)
   length = len(list)
   for i in range(0, length):
-    if random.randrange(100) < 5:
+    if random.randrange(100) < 5 and list[i].isalpha():
       matcher = matchers[i][1]
       if matcher in tagMap():
-        userInput = requestString("Please select enter a(n) " + tagMap()[matcher])
+        userInput = requestString("Please enter a(n) " + tagMap()[matcher] + ", to replace '" + list[i] + "'")
+        while not userInput.isalpha():
+          userInput = requestString("Invalid input. Enter a(n) " + tagMap()[matcher] + ", to replace '" + list[i] + "'")
         if userInput == "QUIT":
           printNow("returning...")
           return
@@ -68,5 +68,10 @@ def tagMap():
   "VBD": "verb, past tense", "VBG": "verb, present participle or gerund", "VBN": "verb, past participle",
   "VBP": "verb, present tense, not third person singular", "VBZ": "verb, present tense, third person singular",
   "WDT": " WH-determiner", "WP": "WH-pronoun", "WP$": "WH-pronoun, possesive", "WRB": "WH-adverb"}
- 
+    
+    
+  
+    
+      
+    
   
