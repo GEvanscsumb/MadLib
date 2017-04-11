@@ -1,3 +1,8 @@
+"""
+Mad Lib Generator 
+@Autors Trammel May, Gene Evans, Trent Duhart
+@Date April 10th, 2017
+"""
 
 def readText(filePath):
   text = open(filePath, 'r').read()
